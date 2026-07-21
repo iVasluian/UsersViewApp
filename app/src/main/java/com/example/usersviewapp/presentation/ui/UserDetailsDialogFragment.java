@@ -1,6 +1,8 @@
 package com.example.usersviewapp.presentation.ui;
 
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -71,6 +73,15 @@ public class UserDetailsDialogFragment extends DialogFragment {
                 new androidx.appcompat.app.AlertDialog.Builder(requireContext())
                         .setView(binding.getRoot())
                         .create();
+
+        dialog.setOnShowListener(dialogInterface -> {
+            if (dialog.getWindow() != null) {
+                dialog.getWindow().setBackgroundDrawable(
+                        new ColorDrawable(Color.TRANSPARENT)
+                );
+                dialog.getWindow().setClipToOutline(false);
+            }
+        });
 
         return dialog;
     }
